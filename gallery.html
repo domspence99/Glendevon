@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Photo gallery of Glendevon Cottage and the village of Staithes, North Yorkshire.">
+  <title>Gallery — Glendevon Cottage, Staithes</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .photo-gallery {
+      background: var(--white);
+    }
+    .masonry-grid {
+      columns: 3;
+      column-gap: 1rem;
+      margin-top: 3rem;
+    }
+    .masonry-grid img {
+      width: 100%;
+      margin-bottom: 1rem;
+      border-radius: var(--radius-lg);
+      display: block;
+      transition: opacity 0.25s, transform 0.25s var(--ease);
+      cursor: zoom-in;
+    }
+    .masonry-grid img:hover {
+      opacity: 0.9;
+      transform: scale(1.01);
+    }
+    /* Lightbox */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(10, 12, 18, 0.95);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+    .lightbox.open { display: flex; }
+    .lightbox img {
+      max-width: 90vw;
+      max-height: 85vh;
+      object-fit: contain;
+      border-radius: var(--radius-lg);
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 1.5rem; right: 1.5rem;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 2rem;
+      cursor: pointer;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+      line-height: 1;
+    }
+    .lightbox-close:hover { opacity: 1; }
+    .lightbox-prev, .lightbox-next {
+      position: absolute;
+      top: 50%; transform: translateY(-50%);
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 50%;
+      color: white;
+      font-size: 1.5rem;
+      width: 3rem; height: 3rem;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .lightbox-prev:hover, .lightbox-next:hover { background: rgba(255,255,255,0.18); }
+    .lightbox-prev { left: 1.5rem; }
+    .lightbox-next { right: 1.5rem; }
+    @media (max-width: 768px) {
+      .masonry-grid { columns: 2; }
+    }
+    @media (max-width: 480px) {
+      .masonry-grid { columns: 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="site-nav scrolled" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">Glendevon <span>Cottage</span></a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="gallery.html" class="active">Gallery</a></li>
+        <li><a href="amenities.html">Amenities</a></li>
+        <li><a href="village.html">Staithes</a></li>
+        <li><a href="availability.html">Availability</a></li>
+        <li><a href="contact.html" class="nav-cta">Book Now</a></li>
+      </ul>
+      <button class="nav-hamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <ul class="nav-mobile">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="amenities.html">Amenities</a></li>
+      <li><a href="village.html">Staithes</a></li>
+      <li><a href="availability.html">Availability</a></li>
+      <li><a href="contact.html">Book Now</a></li>
+    </ul>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero" style="padding-top: 72px;">
+    <div class="page-hero-bg" style="background-image: url('https://staithesholidaycottage.com/images/staithes02.jpg');"></div>
+    <div class="page-hero-overlay"></div>
+    <div class="page-hero-content">
+      <p class="label">Photos</p>
+      <h1>Gallery</h1>
+    </div>
+  </div>
+
+  <!-- GALLERY -->
+  <section class="photo-gallery section" aria-label="Photo gallery">
+    <div class="container">
+      <p class="label">The Cottage &amp; Surroundings</p>
+      <div class="divider"></div>
+      <p style="color: var(--slate); max-width: 60ch;">A glimpse inside Glendevon and the timeless village of Staithes — from the open fire in the sitting room to the harbour at high tide.</p>
+
+      <div class="masonry-grid" id="gallery">
+        <img src="https://staithesholidaycottage.com/thumbs/01.jpg" alt="Cottage room 1" data-full="https://staithesholidaycottage.com/thumbs/01.jpg" loading="lazy">
+        <img src="https://staithesholidaycottage.com/thumbs/02.jpg" alt="Cottage room 2" data-full="https://staithesholidaycottage.com/thumbs/02.jpg" loading="lazy">
+        <img src="https://staithesholidaycottage.com/thumbs/03.jpg" alt="Cottage room 3" data-full="https://staithesholidaycottage.com/thumbs/03.jpg" loading="lazy">
+        <img src="https://staithesholidaycottage.com/thumbs/04.jpg" alt="Cottage room 4" data-full="https://staithesholidaycottage.com/thumbs/04.jpg" loading="lazy">
+        <img src="https://staithesholidaycottage.com/thumbs/05.jpg" alt="Cottage room 5" data-full="https://staithesholidaycottage.com/thumbs/05.jpg" loading="lazy">
+        <img src="https://staithesholidaycottage.com/thumbs/06.jpg" alt="Cottage room 6" data-full="https://staithesholidaycottage.com/thumbs/06.jpg" loading="lazy">
+        <img src="https://staithesholidaycottage.com/thumbs/07.jpg" alt="Cottage room 7" data-full="https://staithesholidaycottage.com/thumbs/07.jpg" loading="lazy">
+        <img src="https://staithesholidaycottage.com/thumbs/08.jpg" alt="Cottage room 8" data-full="https://staithesholidaycottage.com/thumbs/08.jpg" loading="lazy">
+        <img src="https://staithesholidaycottage.com/thumbs/09.jpg" alt="Cottage room 9" data-full="https://staithesholidaycottage.com/thumbs/09.jpg" loading="lazy">
+        <img src="https://staithesholidaycottage.com/thumbs/010.jpg" alt="Staithes village 1" data-full="https://staithesholidaycottage.com/thumbs/010.jpg" loading="lazy">
+        <img src="https://staithesholidaycottage.com/thumbs/011.jpg" alt="Staithes village 2" data-full="https://staithesholidaycottage.com/thumbs/011.jpg" loading="lazy">
+        <img src="https://staithesholidaycottage.com/thumbs/012.jpg" alt="Staithes village 3" data-full="https://staithesholidaycottage.com/thumbs/012.jpg" loading="lazy">
+        <img src="https://staithesholidaycottage.com/thumbs/013.jpg" alt="Staithes village 4" data-full="https://staithesholidaycottage.com/thumbs/013.jpg" loading="lazy">
+        <img src="https://staithesholidaycottage.com/thumbs/014.jpg" alt="Staithes village 5" data-full="https://staithesholidaycottage.com/thumbs/014.jpg" loading="lazy">
+        <img src="https://staithesholidaycottage.com/thumbs/016.jpg" alt="Staithes view 1" data-full="https://staithesholidaycottage.com/thumbs/016.jpg" loading="lazy">
+        <img src="https://staithesholidaycottage.com/thumbs/017.jpg" alt="Staithes view 2" data-full="https://staithesholidaycottage.com/thumbs/017.jpg" loading="lazy">
+        <img src="https://staithesholidaycottage.com/thumbs/018.jpg" alt="Staithes view 3" data-full="https://staithesholidaycottage.com/thumbs/018.jpg" loading="lazy">
+        <img src="https://staithesholidaycottage.com/thumbs/019.jpg" alt="Staithes view 4" data-full="https://staithesholidaycottage.com/thumbs/019.jpg" loading="lazy">
+        <img src="https://staithesholidaycottage.com/thumbs/020.jpg" alt="Staithes view 5" data-full="https://staithesholidaycottage.com/thumbs/020.jpg" loading="lazy">
+        <img src="https://staithesholidaycottage.com/thumbs/021.jpg" alt="Staithes view 6" data-full="https://staithesholidaycottage.com/thumbs/021.jpg" loading="lazy">
+        <img src="https://staithesholidaycottage.com/thumbs/022.jpg" alt="Staithes view 7" data-full="https://staithesholidaycottage.com/thumbs/022.jpg" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-label="Image viewer" aria-modal="true">
+    <button class="lightbox-close" id="lb-close" aria-label="Close">✕</button>
+    <button class="lightbox-prev" id="lb-prev" aria-label="Previous image">‹</button>
+    <img id="lb-img" src="" alt="">
+    <button class="lightbox-next" id="lb-next" aria-label="Next image">›</button>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="site-footer" aria-label="Site footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">Glendevon <span>Cottage</span></div>
+        <p class="footer-copy">© 2025 Glendevon Cottage, Staithes. All rights reserved.</p>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="availability.html">Availability</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    // Lightbox
+    const imgs = Array.from(document.querySelectorAll('.masonry-grid img'));
+    const lightbox = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lb-img');
+    let currentIndex = 0;
+
+    function openLightbox(index) {
+      currentIndex = index;
+      lbImg.src = imgs[index].dataset.full || imgs[index].src;
+      lbImg.alt = imgs[index].alt;
+      lightbox.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox() {
+      lightbox.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    function showNext() { openLightbox((currentIndex + 1) % imgs.length); }
+    function showPrev() { openLightbox((currentIndex - 1 + imgs.length) % imgs.length); }
+
+    imgs.forEach((img, i) => img.addEventListener('click', () => openLightbox(i)));
+    document.getElementById('lb-close').addEventListener('click', closeLightbox);
+    document.getElementById('lb-next').addEventListener('click', showNext);
+    document.getElementById('lb-prev').addEventListener('click', showPrev);
+    lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+    document.addEventListener('keydown', (e) => {
+      if (!lightbox.classList.contains('open')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowRight') showNext();
+      if (e.key === 'ArrowLeft') showPrev();
+    });
+  </script>
+</body>
+</html>

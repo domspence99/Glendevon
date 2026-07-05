@@ -126,17 +126,104 @@
       max-width: none;
     }
 
-    .calendar-embed {
-      background: var(--cream);
+    /* Availability calendar */
+    .availability-calendar {
+      background: var(--white);
       border-radius: var(--radius-lg);
-      padding: 2rem;
-      margin-top: 3rem;
+      border: 1px solid rgba(61,74,92,0.1);
+      padding: 1.75rem;
+      max-width: 480px;
+      margin: 0 auto;
     }
-    .calendar-embed iframe {
-      width: 100%;
-      height: 580px;
-      border: none;
+    .cal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.25rem;
+    }
+    .cal-header h3 {
+      font-size: 1.3rem;
+      color: var(--ink);
+    }
+    .cal-nav {
+      width: 2.25rem;
+      height: 2.25rem;
+      border-radius: 50%;
+      border: 1px solid rgba(61,74,92,0.2);
+      background: var(--white);
+      color: var(--ink);
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: background 0.2s, opacity 0.2s;
+    }
+    .cal-nav:hover:not(:disabled) { background: var(--cream); }
+    .cal-nav:disabled { opacity: 0.3; cursor: not-allowed; }
+    .cal-weekdays, .cal-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 0.4rem;
+    }
+    .cal-weekdays {
+      margin-bottom: 0.5rem;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--mist);
+      text-align: center;
+    }
+    .cal-day {
+      aspect-ratio: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       border-radius: var(--radius);
+      font-size: 0.85rem;
+      color: var(--slate);
+    }
+    .cal-day.other-month { visibility: hidden; }
+    .cal-day.available {
+      background: rgba(74,124,142,0.14);
+      color: var(--sea);
+    }
+    .cal-day.booked {
+      background: rgba(181,96,42,0.14);
+      color: var(--ember);
+      text-decoration: line-through;
+      text-decoration-color: rgba(181,96,42,0.4);
+    }
+    .cal-day.past {
+      color: var(--mist);
+      opacity: 0.45;
+    }
+    .cal-day.today {
+      box-shadow: 0 0 0 2px var(--ember);
+    }
+    .cal-legend {
+      display: flex;
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+      font-size: 0.8rem;
+      color: var(--slate);
+    }
+    .cal-legend span {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .cal-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+    .cal-dot-available { background: var(--sea); }
+    .cal-dot-booked { background: var(--ember); }
+    .cal-updated {
+      margin-top: 1.25rem;
+      font-size: 0.78rem;
+      color: var(--mist);
+      text-align: center;
     }
   </style>
 </head>
@@ -291,14 +378,22 @@
       <p class="label">Live Calendar</p>
       <div class="divider"></div>
       <h2>Check availability</h2>
-      <p style="color: var(--slate); margin-top: 1rem; line-height: 1.8; max-width: 60ch;">The calendar below shows current bookings. Green weeks are available. To reserve dates, use the contact form or email us directly.</p>
-      <div class="calendar-embed">
-        <iframe
-          src="https://staithesholidaycottage.com/availability/availability.php"
-          title="Availability calendar for Glendevon Cottage"
-          loading="lazy"
-          scrolling="no">
-        </iframe>
+      <p style="color: var(--slate); margin-top: 1rem; line-height: 1.8; max-width: 60ch;">The calendar below combines bookings made via Vrbo with our own direct bookings, so it reflects availability across both. To reserve dates, use the contact form or email us directly.</p>
+      <div class="availability-calendar" id="availability-calendar">
+        <div class="cal-header">
+          <button class="cal-nav" id="cal-prev" aria-label="Previous month" type="button">‹</button>
+          <h3 id="cal-month-label"></h3>
+          <button class="cal-nav" id="cal-next" aria-label="Next month" type="button">›</button>
+        </div>
+        <div class="cal-weekdays">
+          <span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
+        </div>
+        <div class="cal-grid" id="cal-grid"></div>
+        <div class="cal-legend">
+          <span><i class="cal-dot cal-dot-available"></i> Available</span>
+          <span><i class="cal-dot cal-dot-booked"></i> Booked</span>
+        </div>
+        <p class="cal-updated" id="cal-updated"></p>
       </div>
       <div style="text-align: center; margin-top: 3rem;">
         <a href="contact.html" class="btn btn-primary">Enquire &amp; Book</a>
@@ -323,5 +418,6 @@
   </footer>
 
   <script src="js/main.js"></script>
+  <script src="js/availability-calendar.js"></script>
 </body>
 </html>

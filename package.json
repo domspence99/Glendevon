@@ -1,0 +1,10 @@
+{
+  "name": "glendevon-cottage-site",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Glendevon Cottage site — availability sync tooling",
+  "type": "module",
+  "scripts": {
+    "sync-availability": "node scripts/sync-availability.mjs"
+  }
+}

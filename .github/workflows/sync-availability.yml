@@ -1,0 +1,37 @@
+name: Sync availability calendar
+
+on:
+  schedule:
+    # Runs once a day at 05:00 UTC. VRBO's own feed only updates every ~30
+    # minutes anyway, so daily is plenty for a "visual availability" display.
+    - cron: '0 5 * * *'
+  workflow_dispatch: {}
+  push:
+    paths:
+      - 'data/manual-blocks.json'
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Fetch VRBO calendar and rebuild availability.json
+        env:
+          VRBO_ICAL_URL: ${{ secrets.VRBO_ICAL_URL }}
+        run: node scripts/sync-availability.mjs
+
+      - name: Commit updated availability data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/availability.json
+          git diff --cached --quiet || git commit -m "Sync availability calendar"
+          git push

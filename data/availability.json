@@ -1,12 +1,7 @@
 {
-  "generatedAt": "2026-07-14T07:09:50.722Z",
+  "generatedAt": "2026-07-15T07:13:21.330Z",
   "vrboFeedConfigured": true,
   "bookedRanges": [
-    {
-      "start": "2025-07-10",
-      "end": "2025-07-13",
-      "source": "vrbo"
-    },
     {
       "start": "2025-07-13",
       "end": "2025-07-21",
@@ -443,6 +438,16 @@
       "source": "vrbo"
     },
     {
+      "start": "2026-08-25",
+      "end": "2026-08-26",
+      "source": "vrbo"
+    },
+    {
+      "start": "2026-08-26",
+      "end": "2026-08-27",
+      "source": "vrbo"
+    },
+    {
       "start": "2026-08-27",
       "end": "2026-08-28",
       "source": "vrbo"
@@ -478,7 +483,12 @@
       "source": "vrbo"
     },
     {
-      "start": "2026-11-20",
+      "start": "2026-11-13",
+      "end": "2026-11-14",
+      "source": "vrbo"
+    },
+    {
+      "start": "2026-11-21",
       "end": "2026-11-22",
       "source": "vrbo"
     },

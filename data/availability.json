@@ -1,12 +1,7 @@
 {
-  "generatedAt": "2026-09-04T09:19:32.545Z",
+  "generatedAt": "2026-09-05T08:48:53.547Z",
   "vrboFeedConfigured": true,
   "bookedRanges": [
-    {
-      "start": "2025-08-29",
-      "end": "2025-09-01",
-      "source": "vrbo"
-    },
     {
       "start": "2025-09-03",
       "end": "2025-09-08",
@@ -448,13 +443,28 @@
       "source": "vrbo"
     },
     {
+      "start": "2026-10-13",
+      "end": "2026-10-14",
+      "source": "vrbo"
+    },
+    {
       "start": "2026-10-14",
       "end": "2026-10-17",
       "source": "vrbo"
     },
     {
+      "start": "2026-10-28",
+      "end": "2026-10-29",
+      "source": "vrbo"
+    },
+    {
       "start": "2026-10-29",
       "end": "2026-11-02",
+      "source": "vrbo"
+    },
+    {
+      "start": "2026-11-12",
+      "end": "2026-11-13",
       "source": "vrbo"
     },
     {
@@ -470,6 +480,16 @@
     {
       "start": "2026-11-15",
       "end": "2026-11-16",
+      "source": "vrbo"
+    },
+    {
+      "start": "2026-11-16",
+      "end": "2026-11-17",
+      "source": "vrbo"
+    },
+    {
+      "start": "2026-12-03",
+      "end": "2026-12-04",
       "source": "vrbo"
     },
     {

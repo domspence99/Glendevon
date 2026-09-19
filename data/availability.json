@@ -1,12 +1,7 @@
 {
-  "generatedAt": "2026-09-18T09:22:59.171Z",
+  "generatedAt": "2026-09-19T09:11:28.916Z",
   "vrboFeedConfigured": true,
   "bookedRanges": [
-    {
-      "start": "2025-09-12",
-      "end": "2025-09-15",
-      "source": "vrbo"
-    },
     {
       "start": "2025-09-18",
       "end": "2025-09-22",
@@ -530,11 +525,6 @@
     {
       "start": "2027-01-02",
       "end": "2027-01-03",
-      "source": "vrbo"
-    },
-    {
-      "start": "2027-01-22",
-      "end": "2027-01-24",
       "source": "vrbo"
     },
     {
